@@ -1,0 +1,6 @@
+.mainform .ant-form-item-label {
+  flex-basis: 30px;
+}
+.mainform .ant-form-item-control {
+  flex-basis: auto;
+}

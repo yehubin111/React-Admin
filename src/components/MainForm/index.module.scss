@@ -1,0 +1,54 @@
+.maintitle {
+  font-size: 24px;
+  color: #000;
+  line-height: 66px;
+  padding-left: 24px;
+}
+.mainform {
+  .item {
+    display: block;
+  }
+  .sortinput {
+    min-width: 180px;
+    max-width: 240px;
+    flex-grow: 1;
+  }
+  .sortselect {
+    min-width: 180px;
+    max-width: 240px;
+    flex-grow: 1;
+  }
+  .sortrange {
+    // min-width: 400px;
+    // max-width: 460px;
+    // flex-grow: 1;
+    width: 100%;
+  }
+  &.grid {
+    display: grid;
+    .ant-form-item-label {
+      flex-basis: 30px;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .mainform {
+    &.grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .mainform {
+    &.grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .mainform {
+    &.grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

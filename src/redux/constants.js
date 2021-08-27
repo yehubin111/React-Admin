@@ -1,0 +1,24 @@
+
+const constants = {
+    // common
+    SAVEINFO: 'SAVEINFO',
+    CLEARINFO: 'CLEARINFO',
+    SAVELANG: 'SAVELANG',
+    SAVEVIEWCACHE: 'SAVEVIEWCACHE',
+    DELVIEWCACHE: 'DELVIEWCACHE',
+    // SAVEUPLOADINFO: 'SAVEUPLOADINFO',
+    LOGINOUT: 'LOGINOUT',
+    /**
+     * base基础数据
+     */
+    SAVETOPIC: 'SAVETOPIC',
+    // product
+    SAVEPRODUCT: 'SAVEPRODUCT',
+    // user
+    SAVEUSERLIST: 'SAVEUSERLIST',
+    SAVEINVITATIONLIST: 'SAVEINVITATIONLIST',
+    // operation
+    SAVEBANNERLIST: 'SAVEBANNERLIST'
+}
+
+export default constants;

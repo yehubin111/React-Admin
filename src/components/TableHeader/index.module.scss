@@ -1,0 +1,63 @@
+.header {
+  background-color: #fff;
+  height: 64px;
+  padding: 0 24px;
+  .title {
+    font-weight: normal;
+    font-size: 16px;
+  }
+  .ctrl {
+    overflow-x: auto;
+    .space {
+      .radio {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .header {
+    padding: 0 0 0 24px;
+    position: relative;
+    .title {
+      // width: 0;
+      overflow: hidden;
+    }
+    .ctrl {
+      padding: 15px 0;
+      .space {
+        padding: 0 24px;
+      }
+    }
+    &:before, &:after {
+      position: absolute;
+      width: 30px;
+      z-index: 1;
+      opacity: 1;
+      transition: opacity 0.3s;
+      content: "";
+      pointer-events: none;
+      top: 0;
+      height: 100%;
+      opacity: 0;
+    }
+    &:before {
+      box-shadow: inset 10px 0 8px -8px rgba(0, 0, 0, 0.15);
+      left: 0;
+    }
+    &:after {
+      box-shadow: inset -10px 0 8px -8px rgba(0, 0, 0, 0.15);
+      right: 0;
+    }
+    &.header-scroll-left {
+      &:before {
+        opacity: 1;
+      }
+    }
+    &.header-scroll-right {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}

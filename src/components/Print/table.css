@@ -1,0 +1,33 @@
+.rowName .ant-table-container table > thead > tr:first-child th:first-child {
+    padding-left: 0;
+  }
+  .rowName .ant-table-small .ant-table-thead > tr > th {
+    background-color: #fff;
+    border-bottom: none;
+    font-size: 12px;
+  }
+  .rowName .ant-table .ant-table-container table > tbody > tr > td {
+    color: #000;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .rowName .ant-table .ant-table-container table > tbody > tr > td:first-child {
+    padding-left: 0;
+  }
+  .rowName .ant-table-tbody > tr > td {
+    background-color: #fff;
+    border-bottom: none;
+  }
+  .rowName .ant-table-tbody > .rowHover:hover > td {
+    background-color: #fff;
+  }
+  .total-name {
+    padding-left: 0 !important;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .total-count {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+  }

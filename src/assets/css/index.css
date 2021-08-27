@@ -1,0 +1,182 @@
+@import "~antd/dist/antd.css";
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+p,
+h1 {
+  margin: 0;
+}
+
+/*横向*/
+.rf {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.rfw {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/*纵向*/
+.cf {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.jc {
+  justify-content: center;
+}
+
+.jsb {
+  justify-content: space-between;
+}
+
+.jfs {
+  justify-content: flex-start;
+}
+
+.jfe {
+  justify-content: flex-end;
+}
+
+.ac {
+  align-items: center;
+}
+
+.afs {
+  align-items: flex-start;
+}
+
+.afe {
+  align-items: flex-end;
+}
+
+.c-gray777 {
+  color: #777;
+}
+
+.c-red {
+  color: #ff4141;
+}
+
+.l-t {
+  text-decoration: line-through;
+}
+
+.elps {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ant-table-container table > thead > tr:first-child th:first-child {
+  padding-left: 24px;
+}
+.ant-table .ant-table-container table > tbody > tr > td:first-child {
+  padding-left: 24px;
+}
+tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td {
+  background: #eaf7ff;
+}
+
+/* 首列无须缩进情况 */
+.no_retract_table table > thead > tr:first-child th:first-child,
+.no_retract_table table > tbody > tr > td:first-child {
+  padding-left: 8px !important;
+}
+
+/* 可编辑输入框头部缩进 */
+.ant-table-container table > thead > tr:first-child th.ant-table-edit-cell {
+  padding-left: 20px !important;
+}
+
+.dark-global {
+  color: #fff;
+}
+span.button {
+  color: #1890ff;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  margin: 2px 0;
+  display: inline-block;
+}
+span.button.off {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+span.button:hover {
+  color: #379fff;
+}
+span.line-button {
+  color: #1890ff;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  text-decoration: underline;
+}
+span.line-button.off {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+span.line-button:hover {
+  color: #379fff;
+}
+span.button.off:hover {
+  color: rgba(0, 0, 0, 0.25);
+}
+span.dangerButton {
+  color: #ff4346;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
+span.dangerButton:hover {
+  color: #ff6c6a;
+}
+
+@media screen and (max-width: 575px) {
+  .dark-global {
+    color: inherit;
+  }
+}
+/* .ant-table-thead > tr > th, .ant-table-small .ant-table-thead > tr > th {
+  background-color: #eaf7ff;
+  border-bottom-color: #badcfe;
+} */
+/* .form .ant-input {
+  min-width: 180px;
+  max-width: 240px;
+  flex-grow: 1;
+}
+.form .ant-select {
+  min-width: 180px;
+  max-width: 240px;
+  flex-grow: 1;
+}
+.form .ant-picker-range {
+  min-width: 400px;
+  max-width: 460px;
+  flex-grow: 1;
+} */
