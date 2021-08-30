@@ -66,6 +66,7 @@
   background-size: 100%;
   background-attachment: fixed;
   min-height: 100vh;
+  transition: all .2s;
 }
 
 @media screen and (max-width: 1200px) {

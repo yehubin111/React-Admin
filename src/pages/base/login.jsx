@@ -13,7 +13,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 const FormItem = Form.Item;
 const { Password } = Input;
-const { logo, introduce, productName } = defaultConfig;
+const { productName } = defaultConfig;
 
 class Login extends Component {
   state = {
@@ -30,7 +30,7 @@ class Login extends Component {
   }
   render() {
     const { loading } = this.state;
-    const { saveUserInfo, location, langList, lang: currentLang, saveLang } = this.props;
+    const { saveUserInfo, location } = this.props;
 
     return (
       <>

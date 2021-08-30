@@ -11,7 +11,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined, ExportOutlined, EditOutlined, Glo
 import ModifyPassword from "./ModifyPassword";
 import MenuNav from "./MenuNav";
 
-const { mainLogo, navLogo, avatar } = defaultConfig;
+const { navLogo, avatar } = defaultConfig;
 
 class TopInfo extends Component {
     state = {
@@ -34,8 +34,8 @@ class TopInfo extends Component {
         history.push("/base/login?redirect=" + encodeURIComponent(redirect));
     }
     render() {
-        const { onMenu, collapsed, userInfo, isMobile, isSide, isDark, routes, langList, locale, saveLang, history } = this.props;
-        const { count } = this.state;
+        const { onMenu, collapsed, userInfo, isMobile, isSide, isDark, routes, langList, locale, saveLang } = this.props;
+        // const { count } = this.state;
 
         const userMenu = (
             <Menu>
@@ -70,7 +70,7 @@ class TopInfo extends Component {
         return (
             <div className={`rf jsb ac ${styles.top}`}>
                 {isMobile ? <div className={`rf ac ${styles.left}`}>
-                    <img className={styles.logo} src={mainLogo} alt="" />
+                    <img className={styles.logo} src={navLogo} alt="" />
                     {
                         isMobile && React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                             className: styles.menu,
@@ -80,10 +80,18 @@ class TopInfo extends Component {
                 </div> : (
                     !isSide
                         ? <div className={`rf ac ${styles.left}`}>
-                            <img className={styles.logo} src={navLogo} style={{marginRight: "30px"}} alt="" />
+                            <img className={styles.logo} src={navLogo} style={{ marginRight: "20px" }} alt="" />
                             <MenuNav routes={routes} mode="horizontal" theme={isDark && 'dark'} />
                         </div>
-                        : <span></span>
+                        : <div className={styles.left}>
+                            {
+                                React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                                    className: styles.menu,
+                                    onClick: onMenu
+                                })
+                            }
+                        </div>
+                    // <span></span>
                 )}
                 <div className={`rf ac ${styles.right}`}>
                     <Dropdown overlay={userMenu}>
@@ -92,11 +100,11 @@ class TopInfo extends Component {
                             <span className={`${styles.user} ${!isSide && isDark && styles['dark-user']}`}>{t('layouts.TopInfo.hello')}{userInfo.userName}</span>
                         </p>
                     </Dropdown>
-                    {/* <Dropdown overlay={globalMenu}>
+                    <Dropdown overlay={globalMenu}>
                         <p className={styles.global}>
                             <GlobalOutlined className={!isSide && isDark && 'dark-global'} />
                         </p>
-                    </Dropdown> */}
+                    </Dropdown>
                 </div>
                 <ModifyPassword visible={this.state.visible} onCancel={() => {
                     this.setState({

@@ -5,15 +5,24 @@ import { connect } from "react-redux";
 import { wrapContext } from "utils/context";
 import defaultConfig from "defaultConfig";
 import { moduleRouter } from "./config";
+import { debounceFc } from "utils/common";
 
 import { ConfigProvider } from 'antd';
 
 const { productName, limit, structure } = defaultConfig;
 
+let resizeFunc;
 class RouteConfig extends Component {
   state = {
-    isMobile: false,
-    mobileNormalWidth: 576
+    isMobile: false, // 是否手机端
+    mobileNormalWidth: 576, // 手机端临界宽度
+  }
+  constructor() {
+    super();
+    // 根据屏幕宽度判断设备
+    resizeFunc = debounceFc(this.screenResize.bind(this), 300);
+    const screenWidth = document.body.clientWidth;
+    this.state.isMobile = screenWidth < this.state.mobileNormalWidth;
   }
   // 路由权限判断
   getLimitMenus() {
@@ -129,27 +138,29 @@ class RouteConfig extends Component {
     return redirect;
   }
   componentDidMount() {
-    let screenWidth = document.body.clientWidth;
-    if (screenWidth < this.state.mobileNormalWidth) {
-      this.setState({
-        isMobile: true
-      })
-    } else {
-      this.setState({
-        isMobile: false
-      })
-    }
+    // 监听屏幕尺寸变化
+    window.addEventListener("resize", resizeFunc)
+
     // 初始化设置i18next改变语言
     const { lang } = this.props;
     i18nLocale(lang)
-    // // 监听屏幕尺寸变化
-    // this.screenWatch();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", resizeFunc);
+  }
+  screenResize(e) {
+    const screenWidth = e.target.innerWidth;
+    const isMobile = screenWidth < this.state.mobileNormalWidth;
+    if (this.state.isMobile !== isMobile) {
+      this.setState({
+        isMobile
+      })
+    }
   }
   render() {
     const { isMobile } = this.state;
     const { langList, lang } = this.props;
     const menus = this.getLimitMenus();
-
     // 设置basic重定向地址
     const redirect = this.setRedirectLink(menus);
 

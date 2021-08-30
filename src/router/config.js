@@ -8,7 +8,6 @@ import Icon, {
   BarChartOutlined,
   FundOutlined,
   SettingOutlined,
-  FileSearchOutlined,
   AlertOutlined
 } from "@ant-design/icons";
 import { ReactComponent as ExpertIcon } from "assets/images/expert.svg";

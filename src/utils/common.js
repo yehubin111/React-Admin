@@ -13,7 +13,7 @@ export function getUUID() {
 
 // url search参数解析
 export function formatSearchMap(key, url) {
-    let urlsearch = url ? url.match(/(?:\?)[^\#]*/g) : '';
+    let urlsearch = url ? url.match(/(?:\?)[^#]*/g) : '';
     let _sh = urlsearch ? urlsearch[0].substr(1) : decodeURIComponent(window.location.search.substr(1));
     if (!_sh)
         return null;

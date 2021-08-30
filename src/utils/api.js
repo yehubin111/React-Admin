@@ -1,6 +1,6 @@
-import defaultConfig from "../defaultConfig";
-
-export default {
+const url = {
     // common
     login: '/login'
 }
+
+export default url;

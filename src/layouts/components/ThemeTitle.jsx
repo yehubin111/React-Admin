@@ -16,7 +16,7 @@ const ThemeTitle = props => {
   // 匹配
   const reg = new RegExp("\\/:.+\\??"); // /\/:.+\??/;
 
-  let { routes, isMobile } = props;
+  let { routes } = props;
   let patharr = path.split("/").filter(v => v);
   return (
     <div className={styles.themetitle}>

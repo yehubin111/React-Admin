@@ -22,7 +22,7 @@ const MenuNav = props => {
     patharr.forEach((_, index) => {
       let route = routes.find(
         rt => {
-          let path = "^" + rt.path.replace(/(\/:[^\/]*)/g, "[^/]*") + "$";
+          let path = "^" + rt.path.replace(/(\/:[^/]*)/g, "[^/]*") + "$";
           let reg = new RegExp(path);
           return reg.test(`/${patharr.slice(0, index + 1).join("/")}`);
           // rt.path === `/${patharr.slice(0, index + 1).join("/")}`
