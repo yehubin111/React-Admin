@@ -20,7 +20,7 @@ const ContentLayout = props => {
   const { routes, redirectFrom, redirectTo, redirectKey } = props;
 
   const routerCreate = (routes, redirectFrom, redirectTo, redirectKey) => {
-    console.log(11);
+    console.log('route circle');
     let routers = routes.map(router => {
       if (router.children && router.children.length > 0) {
         return routerCreate(
