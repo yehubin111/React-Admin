@@ -64,6 +64,7 @@ const navRouter = [
   {
     path: "/home",
     component: "/home/index",
+    useCache: true,
     meta: {
       name: "首页",
       i18n: "menu.home",

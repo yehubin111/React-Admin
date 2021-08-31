@@ -10,7 +10,7 @@ const { Dragger } = Upload;
 const FileUpload = props => {
     const { userInfo, name, action, beforeUpload, onUpload, onRemove, onEnd, width = 400, resultRender } = props;
     const [visible, changeVisible] = useState(false);
-    const fileTypes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'];
+    // const fileTypes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'];
 
     const handleCheck = (file, checkFileList) => {
         // // 格式验证

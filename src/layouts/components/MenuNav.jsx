@@ -1,12 +1,17 @@
 import React, { useState, useEffect, t } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import styles from './comp.module.scss';
+import { saveViewCache } from "redux/actions";
+import defaultConfig from "defaultConfig";
 
 import { Menu } from "antd";
 
+const { useCache } = defaultConfig;
+
 const MenuNav = props => {
-  const { location: { pathname: path }, routes, onRoute, mode = "inline", theme = "dark" } = props;
+  const { location: { pathname: path }, routes, onRoute, mode = "inline", theme = "dark", saveViewCache } = props;
   const [selectedKeys, setSelectedKeys] = useState([]);
   const [openKeys, setOpenKeys] = useState([]);
 
@@ -20,7 +25,7 @@ const MenuNav = props => {
     let patharr = path.split("/").filter(v => v);
     // 深度遍历
     patharr.forEach((_, index) => {
-      let route = routes.find(
+      let router = routes.find(
         rt => {
           let path = "^" + rt.path.replace(/(\/:[^/]*)/g, "[^/]*") + "$";
           let reg = new RegExp(path);
@@ -29,16 +34,23 @@ const MenuNav = props => {
         }
       );
       // 20210623修改，子路由只有1级，并且无下一级路由，则直接显示父级路由，不展开
-      let usedChildrenLength = route?.children?.filter(child => !child.hidden).length ?? 0;
-      if (!route) { }
+      let usedChildrenLength = router?.children?.filter(child => !child.hidden).length ?? 0;
+      if (!router) { }
       else if (usedChildrenLength > 1) {
-        routes = route.children;
-        defaultOpenKeys.push(route.key);
+        routes = router.children;
+        defaultOpenKeys.push(router.key);
       } else if (usedChildrenLength === 1) {
         // 如果子路由只有一个未隐藏的路由，则先不处理，循环到下一级再处理
-        routes = route.children;
+        routes = router.children;
       } else {
-        defaultSelectedKeys.push(route.key);
+        /**
+         * 20210831新增
+         * 如果已开启缓存配置项，则点击菜单的时候，保存到redux，刷新消失
+         */
+        if (useCache && router.useCache)
+          saveViewCache(router);
+
+        defaultSelectedKeys.push(router.key);
       }
     });
     setSelectedKeys(defaultSelectedKeys);
@@ -110,7 +122,7 @@ const MenuNav = props => {
     </Menu>
 }
 
-export default withRouter(MenuNav);
+export default connect(() => ({}), { saveViewCache })(withRouter(MenuNav));
 
 
 

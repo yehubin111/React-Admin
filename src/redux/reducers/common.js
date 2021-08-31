@@ -45,10 +45,12 @@ export const viewCache = (state = defaultViewCache, action = {}) => {
     let { type, response } = action;
     switch (type) {
         case constants.SAVEVIEWCACHE:
-            console.log(1);
-            if (state.some(route => route.key === response.key)) return state;
-            console.log(2);
-            return state;
+            if (state.some(cache => cache.key === response.key)) return state;
+            return state.concat([{
+                key: response.key,
+                path: response.path,
+                i18n: response.meta.i18n
+            }])
         case constants.DELVIEWCACHE:
             return state;
         default:

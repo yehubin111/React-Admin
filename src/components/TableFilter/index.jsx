@@ -2,7 +2,7 @@ import React, { useState, t } from 'react';
 
 import styles from "./index.module.scss";
 
-import { Button, Input, Select, Form, Space, Checkbox } from "antd";
+import { Button, Input, Select, Form, Space } from "antd";
 import { DatePicker } from "components/Antd";
 
 const { RangePicker } = DatePicker;

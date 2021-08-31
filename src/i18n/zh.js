@@ -2,7 +2,7 @@ import { common, layouts } from "./common/zh";
 import { menu } from "./menu/zh";
 
 // 中文
-export default {
+const lang = {
     common,
     layouts,
     menu,
@@ -203,3 +203,5 @@ export default {
         }
     }
 }
+
+export default lang;

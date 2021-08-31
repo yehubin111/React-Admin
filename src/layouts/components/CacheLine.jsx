@@ -1,32 +1,34 @@
-import React from "react";
+import React, { t } from "react";
+import { connect } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 
 import styles from "./comp.module.scss";
 
 import { CloseOutlined } from "@ant-design/icons";
 
 const CacheLine = props => {
+    const { viewCache } = props;
+    const location = useLocation();
+    const history = useHistory();
+
     return <ul className={`rf ac ${styles.cache}`}>
-        <li className={styles.on}>
-            <span className={styles.font}>重点人员</span>
-            <CloseOutlined />
-        </li>
-        <li>
-            <span className={styles.font}>重点人员</span>
-            <CloseOutlined />
-        </li>
-        <li>
-            <span className={styles.font}>重点人员</span>
-            <CloseOutlined />
-        </li>
-        <li>
-            <span className={styles.font}>重点人员</span>
-            <CloseOutlined />
-        </li>
-        <li>
-            <span className={styles.font}>专家管理</span>
-            <CloseOutlined />
-        </li>
+        {
+            viewCache.map(cache => (
+                <li className={cache.path === location.pathname ? styles.on : ''} key={cache.key} onClick={() => {
+                    history.push(cache.path);
+                }}>
+                    <span className={styles.font}>{t(cache.i18n)}</span>
+                    <CloseOutlined />
+                </li>
+            ))
+        }
     </ul>
 }
 
-export default CacheLine;
+const mapStateToProps = (state) => {
+    return {
+        viewCache: state.viewCache
+    }
+}
+
+export default connect(mapStateToProps, {})(CacheLine);

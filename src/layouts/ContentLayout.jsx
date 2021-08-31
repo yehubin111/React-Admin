@@ -4,7 +4,6 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import CacheRoute, { CacheSwitch } from 'react-router-cache-route'
 
 import defaultConfig from "defaultConfig";
-import { saveViewCache } from 'redux/actions';
 
 import { message } from "antd";
 import PageLoading from "components/PageLoading";
@@ -18,9 +17,10 @@ const RouteSwitch = ({ children }) => {
 }
 
 const ContentLayout = props => {
-  const { routes, redirectFrom, redirectTo, redirectKey, saveViewCache } = props;
+  const { routes, redirectFrom, redirectTo, redirectKey } = props;
 
   const routerCreate = (routes, redirectFrom, redirectTo, redirectKey) => {
+    console.log(11);
     let routers = routes.map(router => {
       if (router.children && router.children.length > 0) {
         return routerCreate(
@@ -89,4 +89,4 @@ const ContentLayout = props => {
   </RouteSwitch>
 };
 
-export default connect(() => ({}), { saveViewCache })(ContentLayout);
+export default connect(() => ({}), {})(ContentLayout);

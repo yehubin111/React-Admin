@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin } from 'antd'; // loading components from code split
 
-export default () => {
+const pageLoading = () => {
   return (
     <div
       style={{
@@ -13,3 +13,5 @@ export default () => {
     </div>
   )
 };
+
+export default pageLoading;
