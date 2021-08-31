@@ -47,7 +47,7 @@ const MenuNav = props => {
          * 20210831新增
          * 如果已开启缓存配置项，则点击菜单的时候，保存到redux，刷新消失
          */
-        if (useCache && router.useCache)
+        if (useCache)
           saveViewCache(router);
 
         defaultSelectedKeys.push(router.key);
