@@ -1,52 +1,66 @@
-import MainTable from "components/MainTable";
+import { useDidCache, useDidRecover } from "react-router-cache-route";
+
+import { Form, Card } from "antd";
+import MainFormItems from "components/MainFormItems";
 
 const Trend = props => {
+    const [form] = Form.useForm();
     const sexList = [
         { label: "男", value: 1 },
         { label: "女", value: 2 }
     ]
+    const likeList = [
+        { label: "足球", value: 1 },
+        { label: "篮球", value: 2 },
+        { label: "乒乓球", value: 3 }
+    ]
 
-    const getListData = payload => {
-        return Promise.resolve({
-            data: [
-                { name: "yy", sex: 1, id: 1 },
-                { name: "qq", sex: 2, id: 2 }
-            ],
-            total: 2
-        })
-    }
-    const filterConfig = [
+    const baseItems = [
         {
             label: "姓名",
-            name: "name",
-            type: "input"
+            name: "shopName",
+            type: "input",
+            required: true
         },
         {
             label: "性别",
             name: "sex",
-            type: "select",
+            type: "radio",
+            required: true,
             data: sexList
-        }
-    ]
-    const columns = [
-        {
-            title: "姓名",
-            dataIndex: "name"
         },
         {
-            title: "性别",
-            dataIndex: "sex",
-            render: (_) => sexList.find(sex => sex.value === _)?.label ?? ''
-        }
+            label: "爱好",
+            name: "like",
+            type: "select",
+            required: true,
+            data: likeList
+        },
+        {
+            label: "头像",
+            name: "head",
+            type: "upload",
+            required: true
+        },
     ]
-    return <MainTable
-        filterConfig={filterConfig}
-        onRequest={payload => getListData(payload)}
-        tableConfig={{
-            columns,
-            rowKey: "id"
-        }}
-    />
+
+    useDidCache(() => {
+        // 离开页面
+        console.log('被缓存')
+    })
+
+    useDidRecover(() => {
+        // 进入已缓存的页面
+        console.log('被恢复')
+    })
+
+    return <Form layout="vertical" form={form} scrollToFirstError={true} onFinish={values => {
+        
+    }}>
+        <Card title="基本信息">
+            <MainFormItems layout="vertical" items={baseItems} />
+        </Card>
+    </Form>
 }
 
 export default Trend;

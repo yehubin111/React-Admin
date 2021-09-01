@@ -16,7 +16,7 @@ export default {
     },
     structure: { // 页面结构配置
         navType: 'top', // side top
-        theme: 'dark', // dark light
+        theme: 'light', // dark light
     },
     showPageInfo: false, // 是否显示页面信息栏
     copyright: 'Copyright © 2021',  // 版权

@@ -88,7 +88,7 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
             <div className={`rf jc ${styles.logo}`}>
               <img src={navLogo} alt="" />
             </div>
-            <MenuNav routes={routes} onRoute={() => {
+            <MenuNav routes={routes} theme={isDark && 'dark'} onRoute={() => {
               onClose();
             }} />
           </Sider>
@@ -100,11 +100,12 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
             trigger={null}
             className={styles.sider}
             collapsedWidth={48}
+            theme={!isDark && 'light'}
           >
             <div className={`rf jc ${styles.logo} ${collapsed && styles['logo-simple']}`}>
               <img src={navLogo} alt="" />
             </div>
-            <MenuNav routes={routes} />
+            <MenuNav routes={routes} theme={isDark && 'dark'} />
           </Sider>
         )
       }

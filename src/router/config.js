@@ -213,6 +213,7 @@ const navRouter = [
       {
         path: "/statistics/trend",
         component: "/statistics/trend",
+        useCache: true,
         meta: {
           name: "信访趋势分析",
           i18n: "menu.statisticsTrend",
