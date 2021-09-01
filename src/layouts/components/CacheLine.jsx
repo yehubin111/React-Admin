@@ -15,18 +15,28 @@ const CacheLine = props => {
 
     return <ul className={`rf ac ${styles.cache}`}>
         {
-            viewCache.map(cache => (
-                <li className={cache.path === location.pathname ? styles.on : ''} key={cache.key} onClick={() => {
+            viewCache.map(cache => {
+                let tabOn = cache.path === location.pathname;
+
+                return <li className={tabOn ? styles.on : ''} key={cache.key} onClick={() => {
                     history.push(cache.path);
                 }}>
                     <span className={styles.font}>{t(cache.i18n)}</span>
-                    <CloseOutlined onClick={(e) => {
-                        e.stopPropagation();
-                        delViewCache(cache.key);
-                        dropByCacheKey(cache.key);
-                    }} />
+                    {
+                        viewCache.length > 1 && <CloseOutlined onClick={(e) => {
+                            e.stopPropagation();
+                            // 删除缓存列表
+                            delViewCache(cache.key);
+                            dropByCacheKey(cache.key);
+                            // 如果删除的是当前高亮tab，则自动跳转到第一个tab
+                            if (tabOn) {
+                                let tabs = viewCache.filter(tab => tab.key !== cache.key);
+                                history.push(tabs[0].path);
+                            }
+                        }} />
+                    }
                 </li>
-            ))
+            })
         }
     </ul>
 }

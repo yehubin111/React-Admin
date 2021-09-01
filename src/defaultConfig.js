@@ -15,7 +15,7 @@ export default {
         authorLimit: false,
     },
     structure: { // 页面结构配置
-        navType: 'side', // side top
+        navType: 'top', // side top
         theme: 'dark', // dark light
     },
     showPageInfo: false, // 是否显示页面信息栏
