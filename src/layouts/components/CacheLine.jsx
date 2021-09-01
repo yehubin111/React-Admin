@@ -1,13 +1,15 @@
 import React, { t } from "react";
 import { connect } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+import { dropByCacheKey } from "react-router-cache-route";
 
 import styles from "./comp.module.scss";
+import { delViewCache } from "redux/actions";
 
 import { CloseOutlined } from "@ant-design/icons";
 
 const CacheLine = props => {
-    const { viewCache } = props;
+    const { viewCache, delViewCache } = props;
     const location = useLocation();
     const history = useHistory();
 
@@ -18,7 +20,11 @@ const CacheLine = props => {
                     history.push(cache.path);
                 }}>
                     <span className={styles.font}>{t(cache.i18n)}</span>
-                    <CloseOutlined />
+                    <CloseOutlined onClick={(e) => {
+                        e.stopPropagation();
+                        delViewCache(cache.key);
+                        dropByCacheKey(cache.key);
+                    }} />
                 </li>
             ))
         }
@@ -31,4 +37,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {})(CacheLine);
+export default connect(mapStateToProps, { delViewCache })(CacheLine);

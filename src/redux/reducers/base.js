@@ -12,7 +12,7 @@ export const userInfo = (state = defaultInfo, action = {}) => {
   switch (type) {
     case constants.SAVEINFO:
       return state = {
-        userName: response.name || response.loginName,
+        userName: response.suser.name || response.suser.loginName,
         token: response.token,
         // userId: response.userId,
         menuList: response.powerList,

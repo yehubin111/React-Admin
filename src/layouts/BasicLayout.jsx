@@ -99,8 +99,9 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
             collapsed={collapsed}
             trigger={null}
             className={styles.sider}
+            collapsedWidth={48}
           >
-            <div className={`rf jc ${styles.logo}`}>
+            <div className={`rf jc ${styles.logo} ${collapsed && styles['logo-simple']}`}>
               <img src={navLogo} alt="" />
             </div>
             <MenuNav routes={routes} />
@@ -111,7 +112,7 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
         className={[styles.layout]}
         style={{
           marginLeft: !isMobile && isSide ? (
-            !collapsed ? "200px" : "80px"
+            !collapsed ? "200px" : "48px"
           ) : "0px"
         }}
       >

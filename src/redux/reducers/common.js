@@ -52,7 +52,7 @@ export const viewCache = (state = defaultViewCache, action = {}) => {
                 i18n: response.meta.i18n
             }])
         case constants.DELVIEWCACHE:
-            return state;
+            return state.filter(cache => cache.key !== response);
         default:
             return state;
     }
