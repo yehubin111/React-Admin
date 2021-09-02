@@ -140,7 +140,6 @@ class RouteConfig extends Component {
   componentDidMount() {
     // 监听屏幕尺寸变化
     window.addEventListener("resize", resizeFunc)
-
     // 初始化设置i18next改变语言
     const { lang } = this.props;
     i18nLocale(lang)
