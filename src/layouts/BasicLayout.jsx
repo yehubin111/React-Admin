@@ -84,6 +84,7 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
             collapsed={false}
             trigger={null}
             className={styles.sider}
+            theme={!isDark && 'light'}
           >
             <div className={`rf jc ${styles.logo}`}>
               <img src={navLogo} alt="" />

@@ -23,7 +23,7 @@ const CacheLine = props => {
                 }}>
                     <span className={styles.font}>{t(cache.i18n)}</span>
                     {
-                        viewCache.length > 1 && <CloseOutlined onClick={(e) => {
+                        viewCache.length > 1 && <CloseOutlined className={styles.close} onClick={(e) => {
                             e.stopPropagation();
                             // 删除缓存列表
                             delViewCache(cache.key);
