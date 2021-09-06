@@ -174,7 +174,7 @@ class RouteConfig extends Component {
           device: isMobile ? "h5" : "web",
           locale: locale?.value ?? "zh"
         }}>
-          <BrowserRouter>
+          <BrowserRouter basename="/app-react">
             <Switch>
               <Redirect exact key="/" from="/" to={redirect}></Redirect>
               {routerConfig.map(router => {
