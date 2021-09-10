@@ -42,7 +42,9 @@ const persistor = persistStore(
   store
 )
 
-const render = Component => {
+const render = (Component, props = {}) => {
+  const { container } = props;
+
   const App = () => {
     // 绑定到React对象上
     const { t, i18n } = useTranslation();
@@ -61,10 +63,29 @@ const render = Component => {
   ReactDOM.render(
     <App />
     ,
-    document.getElementById('root')
+    container ? container.querySelector('#react-root') : document.querySelector('#react-root')
   );
 }
-render(Route);
+
+if (!window.__POWERED_BY_QIANKUN__)
+  render(Route);
+
+/**
+ * qiankun
+ */
+export async function bootstrap() {
+  console.log('[react16] react app bootstraped');
+}
+
+export async function mount(props) {
+  console.log('[react16] props from main framework', props);
+  render(Route, props);
+}
+
+export async function unmount(props) {
+  const { container } = props;
+  ReactDOM.unmountComponentAtNode(container ? container.querySelector('#react-root') : document.querySelector('#react-root'));
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
