@@ -110,9 +110,9 @@
           color: $mainColor;
         }
         &.on {
-          border-color: $mainColor;
+          border-color: var(--ant-primary-color); // $mainColor;
           background-color: $minorColor;
-          color: $mainColor;
+          color: var(--ant-primary-color); // $mainColor;
         }
       }
     }
