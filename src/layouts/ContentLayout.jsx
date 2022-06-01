@@ -59,7 +59,7 @@ const ContentLayout = props => {
           }
         }
         return (
-          router.useCache
+          router.cache
             ? <CacheRoute {...props} cacheKey={props.key} />
             : <Route {...props} />
         );

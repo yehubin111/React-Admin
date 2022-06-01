@@ -119,7 +119,7 @@ const MainTable = props => {
 
         getListData(params);
     }, [])
-
+    // filterInitialValues, getListData, headerTabConfig, headerTabKey, payload
     const paginationOption = {
         pageSize: payload[config.pageSize],
         total,

@@ -53,28 +53,32 @@ class Login extends Component {
                 // loading
                 this.changeLoading(true);
                 try {
-                  const response = await requestToLogin(values);
-                  if (response) {
-                    /**
-                     * 保存token
-                     * 暂未找到组件外js文件内使用redux状态方法，token单独保存
-                     */
-                    localStorage.setItem(`${productName}-token`, response.token);
-                    // 保存信息
-                    saveUserInfo(response);
-                    // 根据路由和来源页面跳转
-                    // if (response.menuList && response.menuList.length > 0) {
-                    message.success(t('login.loginSuccess'));
-                    // ios系统不支持正则表达式零宽断言 new RegExp("(?<=\\?redirect=).*")
-                    let reg = new RegExp("\\?redirect=(.*)");
-                    let redirect = location.search.match(reg) ? decodeURIComponent(RegExp.$1) : "/";
-                    setTimeout(() => {
-                      // history.push(redirect);
-                      //   history.push("/");
-                      window.location.href = redirect;
-                    }, 0)
-                    // } else message.error(t('login.menuConfig'));
-                  }
+                  // const response = await requestToLogin(values);
+
+                  localStorage.setItem(`${productName}-token`, '123');
+                  window.location.href = '/';
+                  return;
+                  // if (response) {
+                  //   /**
+                  //    * 保存token
+                  //    * 暂未找到组件外js文件内使用redux状态方法，token单独保存
+                  //    */
+                  //   localStorage.setItem(`${productName}-token`, response.token);
+                  //   // 保存信息
+                  //   saveUserInfo(response);
+                  //   // 根据路由和来源页面跳转
+                  //   // if (response.menuList && response.menuList.length > 0) {
+                  //   message.success(t('login.loginSuccess'));
+                  //   // ios系统不支持正则表达式零宽断言 new RegExp("(?<=\\?redirect=).*")
+                  //   let reg = new RegExp("\\?redirect=(.*)");
+                  //   let redirect = location.search.match(reg) ? decodeURIComponent(RegExp.$1) : "/";
+                  //   setTimeout(() => {
+                  //     // history.push(redirect);
+                  //     //   history.push("/");
+                  //     window.location.href = redirect;
+                  //   }, 0)
+                  //   // } else message.error(t('login.menuConfig'));
+                  // }
                 } catch (err) {
                   // loading over
                   this.changeLoading(false);

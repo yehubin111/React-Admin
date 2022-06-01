@@ -1,4 +1,4 @@
-export default {
+const defaultConfig = {
     productName: 'react', // 影响缓存数据的保存
     navLogo: require('assets/images/logo.png').default,  // 内页菜单栏logo
     avatar: require('assets/images/logo.png').default, // 默认头像
@@ -21,5 +21,7 @@ export default {
     showPageInfo: false, // 是否显示页面信息栏
     copyright: 'Copyright © 2021',  // 版权
     showCopyright: false, // 是否显示页面版权信息
-    useCache: true, // 是否开启页面缓存
+    useCache: false, // 是否开启页面缓存
 }
+
+export default defaultConfig;

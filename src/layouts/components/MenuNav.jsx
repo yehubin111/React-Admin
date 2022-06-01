@@ -61,38 +61,61 @@ const MenuNav = props => {
 
     return { defaultOpenKeys, defaultSelectedKeys };
   }
+  // const toCreateMenu = (routes) => {
+  //   return routes.map(router => {
+  //     // 隐藏菜单
+  //     if (router.hidden) return null;
+  //     // 20210623修改，子路由只有1级，并且无下一级路由，则直接显示父级路由
+  //     let usedChildrenLength = router.children?.filter(child => !child.hidden).length ?? 0;
+  //     if (usedChildrenLength > 1) {
+  //       return (
+  //         <Menu.SubMenu key={router.key} icon={router.meta.icon} title={t(router.meta.i18n)}>
+  //           {toCreateMenu(router.children)}
+  //         </Menu.SubMenu>
+  //       );
+  //     } else if (usedChildrenLength === 1) {
+  //       let child = { ...router.children[0] };
+  //       child.meta = { ...router.meta };
+  //       // child.key = router.key;
+  //       return toCreateMenu([child]);
+  //     } else {
+  //       return (
+  //         <Menu.Item key={router.key} icon={router.meta.icon}>
+  //           <Link to={router.path.split(":")[0]}>{t(router.meta.i18n)}</Link>
+  //         </Menu.Item>
+  //       );
+  //     }
+  //   });
+  // }
   const toCreateMenu = (routes) => {
-    return routes.map(router => {
+    return routes.map(({cache, ...router}) => {
       // 隐藏菜单
       if (router.hidden) return null;
       // 20210623修改，子路由只有1级，并且无下一级路由，则直接显示父级路由
       let usedChildrenLength = router.children?.filter(child => !child.hidden).length ?? 0;
       if (usedChildrenLength > 1) {
-        return (
-          <Menu.SubMenu key={router.key} icon={router.meta.icon} title={t(router.meta.i18n)}>
-            {toCreateMenu(router.children)}
-          </Menu.SubMenu>
-        );
+        return { label: router.meta.name, icon: router.meta.icon, ...router, children: toCreateMenu(router.children) }
       } else if (usedChildrenLength === 1) {
         let child = { ...router.children[0] };
         child.meta = { ...router.meta };
         // child.key = router.key;
-        return toCreateMenu([child]);
+        return toCreateMenu([child])[0];
       } else {
-        return (
-          <Menu.Item key={router.key} icon={router.meta.icon}>
-            <Link to={router.path.split(":")[0]}>{t(router.meta.i18n)}</Link>
-          </Menu.Item>
-        );
+        return { label: router.meta.name, icon: router.meta.icon, ...router }
       }
     });
   }
   const handleClick = (e) => {
+    console.log(e)
     setSelectedKeys([e.key]);
   }
   const handleOpenChange = (e) => {
     setOpenKeys([e[e.length - 1]])
   }
+
+  // 结构化菜单列表
+  const menuItems = toCreateMenu(routes);
+
   return mode === 'horizontal'
     ? <Menu
       className={styles['horizontal-menu']}
@@ -103,8 +126,9 @@ const MenuNav = props => {
         handleClick(e);
         onRoute && onRoute();
       }}
+      items={menuItems}
     >
-      {toCreateMenu(routes)}
+      {/* {toCreateMenu(routes)} */}
     </Menu> : <Menu
       theme={theme}
       mode={mode}
@@ -117,8 +141,9 @@ const MenuNav = props => {
         handleClick(e);
         onRoute && onRoute();
       }}
+      items={menuItems}
     >
-      {toCreateMenu(routes)}
+      {/* {toCreateMenu(routes)} */}
     </Menu>
 }
 

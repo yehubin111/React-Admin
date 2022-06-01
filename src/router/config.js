@@ -17,7 +17,7 @@ import { ReactComponent as ExpertIcon } from "assets/images/expert.svg";
  * meta: Object 额外信息 {侧边导航栏名称，侧边导航栏icon，页面介绍，国际化名称}，必填 
  *    { name: String, icon: String, introduce: String, i18n: String }
  * hidden: Boolean 是否显示在左侧菜单栏
- * useCache: Boolean 是否开启页面状态缓存，需要defaultConfig里的useCache开启后才会生效
+ * cache: Boolean 是否开启页面状态缓存，需要defaultConfig里的useCache开启后才会生效
  * noLimit: Boolean 是否受权限管理约束 包括
  * redirect: String 会生成一个Redirect路由组件
  * children: Array 子组件
@@ -64,7 +64,7 @@ const navRouter = [
   {
     path: "/home",
     component: "/home/index",
-    useCache: true,
+    cache: true,
     meta: {
       name: "首页",
       i18n: "menu.home",
@@ -76,7 +76,7 @@ const navRouter = [
   {
     path: "/record",
     component: "/record/index",
-    useCache: true,
+    cache: true,
     meta: {
       name: "信访记录",
       i18n: "menu.record",
@@ -202,7 +202,7 @@ const navRouter = [
       {
         path: "/statistics/man",
         component: "/statistics/man",
-        useCache: true,
+        cache: true,
         meta: {
           name: "信访人员分析",
           i18n: "menu.statisticsMan",
@@ -213,7 +213,7 @@ const navRouter = [
       {
         path: "/statistics/trend",
         component: "/statistics/trend",
-        useCache: true,
+        cache: true,
         meta: {
           name: "信访趋势分析",
           i18n: "menu.statisticsTrend",
