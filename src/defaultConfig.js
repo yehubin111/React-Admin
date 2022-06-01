@@ -21,7 +21,7 @@ const defaultConfig = {
     showPageInfo: false, // 是否显示页面信息栏
     copyright: 'Copyright © 2021',  // 版权
     showCopyright: false, // 是否显示页面版权信息
-    useCache: false, // 是否开启页面缓存
+    useCache: true, // 是否开启页面缓存
 }
 
 export default defaultConfig;

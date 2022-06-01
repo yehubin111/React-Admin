@@ -94,19 +94,18 @@ const MenuNav = props => {
       // 20210623修改，子路由只有1级，并且无下一级路由，则直接显示父级路由
       let usedChildrenLength = router.children?.filter(child => !child.hidden).length ?? 0;
       if (usedChildrenLength > 1) {
-        return { label: router.meta.name, icon: router.meta.icon, ...router, children: toCreateMenu(router.children) }
+        return { label: t(router.meta.i18n), icon: router.meta.icon, ...router, children: toCreateMenu(router.children) }
       } else if (usedChildrenLength === 1) {
         let child = { ...router.children[0] };
         child.meta = { ...router.meta };
         // child.key = router.key;
         return toCreateMenu([child])[0];
       } else {
-        return { label: router.meta.name, icon: router.meta.icon, ...router }
+        return { label: <Link to={router.path.split(":")[0]}>{t(router.meta.i18n)}</Link>, icon: router.meta.icon, ...router }
       }
     });
   }
   const handleClick = (e) => {
-    console.log(e)
     setSelectedKeys([e.key]);
   }
   const handleOpenChange = (e) => {
