@@ -10,7 +10,8 @@ import { Layout, Drawer } from "antd";
 import ContentLayout from "./ContentLayout";
 import MenuNav from "./components/MenuNav";
 import TopInfo from "./components/TopInfo";
-import ThemeTitle from "./components/ThemeTitle";
+import PageInfo from "./components/PageInfo";
+import ThemeSetting from "./components/ThemeSetting";
 
 const { Header, Sider, Content, Footer } = Layout;
 const { copyright, navLogo, showCopyright } = defaultConfig;
@@ -131,7 +132,7 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
             }}
           />
         </Header>
-        <ThemeTitle routes={routes} isMobile={isMobile} />
+        <PageInfo routes={routes} isMobile={isMobile} />
         <Content className={`${styles.content} ${!isSide && styles['top-content']}`}>
           <ContentLayout
             routes={routes}
@@ -141,6 +142,7 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
           />
         </Content>
         {showCopyright && <Footer className={styles.footer}>{copyright}</Footer>}
+        <ThemeSetting />
       </Layout>
     </Layout>
   )

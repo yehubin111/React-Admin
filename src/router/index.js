@@ -166,6 +166,12 @@ class RouteConfig extends Component {
     const routerConfig = [...menus]; // [...menus, ...baseRouter]
     // 默认取本地语言
     const locale = langList.find(l => l.value === lang);
+
+    ConfigProvider.config({
+      theme: {
+        primaryColor: '#FF1896'
+      }
+    })
     return (
       <ConfigProvider locale={locale?.antd}>
         <wrapContext.Provider value={{

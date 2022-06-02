@@ -2,7 +2,7 @@
 // $mainColor: #1890ff;
 // $minorColor: #e6f7ff;
 // orange
-$mainColor: #fa541c;
+$mainColor: var(--ant-primary-color); // #fa541c;
 $minorColor: #fff2e8;
 
 

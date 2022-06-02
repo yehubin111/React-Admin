@@ -11,7 +11,7 @@ import CacheLine from "./CacheLine";
 
 const { useCache, showPageInfo } = defaultConfig;
 
-const ThemeTitle = props => {
+const PageInfo = props => {
   const { pathname: path } = useLocation();
   // 匹配
   const reg = new RegExp("\\/:.+\\??"); // /\/:.+\??/;
@@ -67,4 +67,4 @@ const mapStateToProps = state => {
   return {};
 };
 
-export default connect(mapStateToProps, {})(ThemeTitle);
+export default connect(mapStateToProps, {})(PageInfo);
