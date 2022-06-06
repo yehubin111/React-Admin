@@ -202,7 +202,6 @@ const navRouter = [
       {
         path: "/statistics/man",
         component: "/statistics/man",
-        cache: true,
         meta: {
           name: "信访人员分析",
           i18n: "menu.statisticsMan",

@@ -9,13 +9,15 @@ import { debounceFc } from "utils/common";
 
 import { ConfigProvider } from 'antd';
 
-const { productName, limit, structure } = defaultConfig;
+const { productName, limit, theme } = defaultConfig;
 
 let resizeFunc;
 class RouteConfig extends Component {
   state = {
     isMobile: false, // 是否手机端
     mobileNormalWidth: 576, // 手机端临界宽度
+    themeStyle: theme.style,
+    themeNavType: theme.navType
   }
   constructor() {
     super();
@@ -156,6 +158,22 @@ class RouteConfig extends Component {
       })
     }
   }
+  changeTheme(type, val) {
+    switch (type) {
+      case 'style':
+        this.setState({
+          themeStyle: val
+        })
+        break;
+      case 'navType':
+        this.setState({
+          themeNavType: val
+        })
+        break;
+      default:
+        break;
+    }
+  }
   render() {
     const { isMobile } = this.state;
     const { langList, lang } = this.props;
@@ -166,17 +184,12 @@ class RouteConfig extends Component {
     const routerConfig = [...menus]; // [...menus, ...baseRouter]
     // 默认取本地语言
     const locale = langList.find(l => l.value === lang);
-
-    ConfigProvider.config({
-      theme: {
-        primaryColor: '#FF1896'
-      }
-    })
     return (
       <ConfigProvider locale={locale?.antd}>
         <wrapContext.Provider value={{
-          navType: structure.navType,  // side top,
-          theme: structure.theme, // dark light
+          navType: this.state.themeNavType,  // side top,
+          themeStyle: this.state.themeStyle, // dark light
+          onChangeTheme: (...argu) => this.changeTheme.call(this, ...argu),
           device: isMobile ? "h5" : "web",
           locale: locale?.value ?? "zh"
         }}>

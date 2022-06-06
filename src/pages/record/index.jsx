@@ -1,4 +1,5 @@
 import MainTable from "components/MainTable";
+import { Button } from "antd"
 
 const Record = props => {
     const sexList = [

@@ -1,9 +1,8 @@
-// blue
-// $mainColor: #1890ff;
-// $minorColor: #e6f7ff;
-// orange
+// :root {
+//     --ant-primary-color: rgb(245, 34, 45);
+// }
+
 $mainColor: var(--ant-primary-color); // #fa541c;
 $minorColor: #fff2e8;
-
 
 $mainSize: 12px;

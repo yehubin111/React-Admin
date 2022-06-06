@@ -97,7 +97,8 @@ h1 {
 .ant-table .ant-table-container table > tbody > tr > td:first-child {
   padding-left: 24px;
 }
-tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td {
+tr.ant-table-expanded-row > td,
+tr.ant-table-expanded-row:hover > td {
   background: #eaf7ff;
 }
 
@@ -155,6 +156,10 @@ span.dangerButton {
 }
 span.dangerButton:hover {
   color: #ff6c6a;
+}
+
+:root {
+  /* --ant-primary-color: rgb(245, 34, 45); */
 }
 
 @media screen and (max-width: 575px) {

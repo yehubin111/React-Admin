@@ -14,9 +14,10 @@ const defaultConfig = {
         normalLimit: false,
         authorLimit: false,
     },
-    structure: { // 页面结构配置
-        navType: 'side', // side top
-        theme: 'light', // dark light
+    theme: {
+        color: 'rgb(245, 34, 45)',
+        style: 'dark', // dark light
+        navType: 'top', // side top
     },
     showPageInfo: false, // 是否显示页面信息栏
     copyright: 'Copyright © 2021',  // 版权

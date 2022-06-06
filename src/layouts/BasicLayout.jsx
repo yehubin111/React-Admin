@@ -64,7 +64,7 @@ const BasicLayout = ({ routes, redirectFrom, redirectTo, redirectKey }) => {
   }
   const isMobile = GLOBAL.device === "h5" ? true : false;
   const isSide = GLOBAL.navType === "side" ? true : false;
-  const isDark = GLOBAL.theme === "dark" ? true : false;
+  const isDark = GLOBAL.themeStyle === "dark" ? true : false;
   return (
     <Layout>
       {isMobile
