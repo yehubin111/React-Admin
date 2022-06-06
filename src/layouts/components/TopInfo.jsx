@@ -37,9 +37,27 @@ class TopInfo extends Component {
         const { onMenu, collapsed, userInfo, isMobile, isSide, isDark, routes, langList, locale, saveLang } = this.props;
         // const { count } = this.state;
 
+        // 菜单下拉
+        const userMenuItems = [
+            { label: t('layouts.TopInfo.changePassword'), icon: <EditOutlined />, key: "1" },
+            { label: t('layouts.TopInfo.logout'), icon: <ExportOutlined />, key: "2" }
+        ]
         const userMenu = (
-            <Menu>
-                <Menu.Item key="1">
+            <Menu items={userMenuItems} onClick={({ key }) => {
+                switch (key) {
+                    case "1":
+                        this.setState({
+                            visible: true
+                        })
+                        break;
+                    case "2":
+                        this.toLoginOut()
+                        break;
+                    default:
+                        break;
+                }
+            }}>
+                {/* <Menu.Item key="1">
                     <p className={styles.downmenu} onClick={() => {
                         this.setState({
                             visible: true
@@ -48,23 +66,26 @@ class TopInfo extends Component {
                 </Menu.Item>
                 <Menu.Item key="2">
                     <p className={styles.downmenu} onClick={this.toLoginOut.bind(this)}><ExportOutlined /> {t('layouts.TopInfo.logout')}</p>
-                </Menu.Item>
+                </Menu.Item> */}
             </Menu>
         )
         // 国际化下拉选择
+        const globalMenuItems = langList.map(lang => ({
+            label: lang.label, icon: lang.icon, key: lang.value
+        }))
         const globalMenu = (
-            <Menu selectable selectedKeys={[locale]} onSelect={e => {
+            <Menu items={globalMenuItems} selectable selectedKeys={[locale]} onSelect={e => {
                 saveLang(e.key);
                 // i18next改变语言
                 i18nLocale(e.key);
             }}>
-                {
+                {/* {
                     langList.map(lang => (
                         <Menu.Item key={lang.value}>
                             <p className={styles.downmenu}>{lang.icon}&nbsp;&nbsp;{lang.label}</p>
                         </Menu.Item>
                     ))
-                }
+                } */}
             </Menu>
         )
         return (
